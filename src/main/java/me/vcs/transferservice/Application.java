@@ -1,4 +1,4 @@
-package me.vcs.transferservice.rest;
+package me.vcs.transferservice;
 
 import static spark.Spark.path;
 
