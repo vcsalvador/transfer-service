@@ -1,8 +1,8 @@
-package handler;
+package me.vcsalvador.transferservice.handler;
 
-import exception.TransferOperationException;
-import model.TransferOperation;
-import repository.BankingAccount;
+import me.vcsalvador.transferservice.exception.TransferOperationException;
+import me.vcsalvador.transferservice.model.TransferOperation;
+import me.vcsalvador.transferservice.repository.BankingAccount;
 
 public class TransferOperationHandler implements Runnable {
 

@@ -1,12 +1,12 @@
-package repository;
+package me.vcsalvador.transferservice.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import exception.TransferOperationException;
+import me.vcsalvador.transferservice.exception.TransferOperationException;
 import java.math.BigDecimal;
-import model.TransferOperation;
+import me.vcsalvador.transferservice.model.TransferOperation;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -106,7 +106,7 @@ class BankingAccountTest {
     }
 
     @Test
-    @DisplayName("Should throw exception for invalid account")
+    @DisplayName("Should throw me.vcsalvador.transferservice.exception for invalid account")
     void shouldThrowException() {
       assertThrows(
           TransferOperationException.class,

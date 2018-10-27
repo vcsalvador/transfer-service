@@ -1,10 +1,10 @@
-package service;
+package me.vcsalvador.transferservice.service;
 
-import exception.AccountNotFoundException;
+import me.vcsalvador.transferservice.exception.AccountNotFoundException;
 import java.math.BigDecimal;
 import java.util.Set;
-import model.AccountInfo;
-import repository.BankingAccount;
+import me.vcsalvador.transferservice.model.AccountInfo;
+import me.vcsalvador.transferservice.repository.BankingAccount;
 
 public class BankingService {
 

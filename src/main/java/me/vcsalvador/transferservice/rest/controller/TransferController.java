@@ -1,14 +1,14 @@
-package rest.controller;
+package me.vcsalvador.transferservice.rest.controller;
 
 import static spark.Spark.before;
 import static spark.Spark.exception;
 import static spark.Spark.post;
 
-import exception.TransferOperationException;
+import me.vcsalvador.transferservice.exception.TransferOperationException;
 import java.math.BigDecimal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import service.TransferService;
+import me.vcsalvador.transferservice.service.TransferService;
 import spark.RouteGroup;
 
 public class TransferController {

@@ -1,4 +1,4 @@
-package exception;
+package me.vcsalvador.transferservice.exception;
 
 public class TransferOperationException extends RuntimeException {
 
