@@ -1,9 +1,9 @@
-package me.vcsalvador.transferservice.service;
+package me.vcs.transferservice.service;
 
-import me.vcsalvador.transferservice.handler.TransferOperationHandler;
+import me.vcs.transferservice.handler.TransferOperationHandler;
 import java.math.BigDecimal;
-import me.vcsalvador.transferservice.model.TransferOperation;
-import me.vcsalvador.transferservice.repository.BankingAccount;
+import me.vcs.transferservice.model.TransferOperation;
+import me.vcs.transferservice.repository.BankingAccount;
 
 public class TransferService {
 

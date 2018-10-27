@@ -1,4 +1,4 @@
-package me.vcsalvador.transferservice.rest.controller;
+package me.vcs.transferservice.rest.controller;
 
 import static spark.Spark.before;
 import static spark.Spark.delete;
@@ -6,10 +6,10 @@ import static spark.Spark.exception;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
-import me.vcsalvador.transferservice.exception.AccountNotFoundException;
+import me.vcs.transferservice.exception.AccountNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import me.vcsalvador.transferservice.service.BankingService;
+import me.vcs.transferservice.service.BankingService;
 import spark.RouteGroup;
 
 public class BankingController {

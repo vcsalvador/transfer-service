@@ -1,12 +1,12 @@
-package me.vcsalvador.transferservice.repository;
+package me.vcs.transferservice.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import me.vcsalvador.transferservice.exception.TransferOperationException;
+import me.vcs.transferservice.exception.TransferOperationException;
 import java.math.BigDecimal;
-import me.vcsalvador.transferservice.model.TransferOperation;
+import me.vcs.transferservice.model.TransferOperation;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

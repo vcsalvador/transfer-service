@@ -67,7 +67,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.6.0</version>
         <configuration>
-          <mainClass>me.vcsalvador.transferservice.rest.Application</mainClass>
+          <mainClass>me.vcs.transferservice.rest.Application</mainClass>
         </configuration>
       </plugin>
     </plugins>

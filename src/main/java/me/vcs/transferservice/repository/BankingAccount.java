@@ -1,13 +1,13 @@
-package me.vcsalvador.transferservice.repository;
+package me.vcs.transferservice.repository;
 
-import me.vcsalvador.transferservice.exception.TransferOperationException;
+import me.vcs.transferservice.exception.TransferOperationException;
 import java.math.BigDecimal;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
-import me.vcsalvador.transferservice.model.AccountInfo;
-import me.vcsalvador.transferservice.model.TransferOperation;
+import me.vcs.transferservice.model.AccountInfo;
+import me.vcs.transferservice.model.TransferOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

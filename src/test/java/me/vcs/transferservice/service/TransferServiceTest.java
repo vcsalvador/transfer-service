@@ -1,4 +1,4 @@
-package me.vcsalvador.transferservice.service;
+package me.vcs.transferservice.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import me.vcsalvador.transferservice.repository.BankingAccount;
+import me.vcs.transferservice.repository.BankingAccount;
 
 class TransferServiceTest {
 

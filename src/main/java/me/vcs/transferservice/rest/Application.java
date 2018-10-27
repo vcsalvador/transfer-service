@@ -1,9 +1,9 @@
-package me.vcsalvador.transferservice.rest;
+package me.vcs.transferservice.rest;
 
 import static spark.Spark.path;
 
-import me.vcsalvador.transferservice.rest.controller.BankingController;
-import me.vcsalvador.transferservice.rest.controller.TransferController;
+import me.vcs.transferservice.rest.controller.BankingController;
+import me.vcs.transferservice.rest.controller.TransferController;
 
 public class Application {
 

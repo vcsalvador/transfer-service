@@ -1,4 +1,4 @@
-package me.vcsalvador.transferservice.model;
+package me.vcs.transferservice.model;
 
 import java.math.BigDecimal;
 import java.util.Objects;
