@@ -1,15 +1,16 @@
 package me.vcs.transferservice.rest.controller;
 
-import static spark.Spark.before;
 import static spark.Spark.delete;
 import static spark.Spark.exception;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
+import com.google.gson.Gson;
 import me.vcs.transferservice.exception.AccountNotFoundException;
+import me.vcs.transferservice.model.AccountInfo;
+import me.vcs.transferservice.service.BankingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import me.vcs.transferservice.service.BankingService;
 import spark.RouteGroup;
 
 public class BankingController {
@@ -20,8 +21,11 @@ public class BankingController {
 
   private BankingService bankingService;
 
+  private Gson gson;
+
   private BankingController() {
     bankingService = BankingService.getInstance();
+    gson = new Gson();
   }
 
   /**
@@ -38,29 +42,36 @@ public class BankingController {
 
   public RouteGroup configEndpoints() {
     return () -> {
-      before((request, response) -> request.body());
       exception(
           AccountNotFoundException.class,
           (e, request, response) -> {
             log.error("Error finding account!", e);
             response.status(404);
-            response.body(e.getMessage());
+            response.body(gson.toJson(e.getMessage()));
           });
+      get("/", "*/*", ((request, response) -> bankingService.getAllAccountsInfo()), gson::toJson);
       get(
           "/:account",
-          (request, response) -> bankingService.getAccountInfo(request.attribute("account")));
-      get("/", ((request, response) -> bankingService.getAllAccountsInfo()));
+          "*/*",
+          (request, response) -> bankingService.getAccountInfo(request.attribute("account")),
+          gson::toJson);
       post(
           "/",
-          ((request, response) ->
-              bankingService.createAccount(request.attribute("id"), request.attribute("balance"))));
+          "application/json",
+          (request, response) -> {
+            AccountInfo accountInfo = gson.fromJson(request.body(), AccountInfo.class);
+            return bankingService.createAccount(accountInfo);
+          },
+          gson::toJson);
       delete(
           "/",
-          ((request, response) -> {
+          "*/*",
+          (request, response) -> {
             bankingService.deleteAll();
             response.status(204);
             return response;
-          }));
+          },
+          gson::toJson);
     };
   }
 }

@@ -1,5 +1,7 @@
 package me.vcs.transferservice;
 
+import static spark.Spark.after;
+import static spark.Spark.awaitInitialization;
 import static spark.Spark.path;
 
 import me.vcs.transferservice.rest.controller.BankingController;
@@ -15,8 +17,11 @@ public class Application {
     BankingController bankingController = BankingController.getInstance();
     TransferController transferController = TransferController.getInstance();
 
-    path("/banking", bankingController.configEndpoints());
+    after((request, response) -> response.type("application/json"));
 
+    path("/banking", bankingController.configEndpoints());
     path("/transfer", transferController.configEndpoints());
+
+    awaitInitialization();
   }
 }

@@ -7,9 +7,9 @@ public class AccountInfo {
   private Integer accountId;
   private BigDecimal balance;
 
-  public AccountInfo(Integer key, BigDecimal value) {
-    this.accountId = key;
-    this.balance = value;
+  public AccountInfo(Integer accountId, BigDecimal balance) {
+    this.accountId = accountId;
+    this.balance = balance;
   }
 
   public Integer getAccountId() {

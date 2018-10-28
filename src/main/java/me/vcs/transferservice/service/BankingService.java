@@ -1,8 +1,8 @@
 package me.vcs.transferservice.service;
 
-import me.vcs.transferservice.exception.AccountNotFoundException;
 import java.math.BigDecimal;
 import java.util.Set;
+import me.vcs.transferservice.exception.AccountNotFoundException;
 import me.vcs.transferservice.model.AccountInfo;
 import me.vcs.transferservice.repository.BankingAccount;
 
@@ -40,8 +40,8 @@ public class BankingService {
     return bankingAccount.getAllAccounts();
   }
 
-  public BigDecimal createAccount(Integer account, BigDecimal balance) {
-    return bankingAccount.createAccount(account, balance);
+  public BigDecimal createAccount(AccountInfo accountInfo) {
+    return bankingAccount.createAccount(accountInfo.getAccountId(), accountInfo.getBalance());
   }
 
   public void deleteAll() {
