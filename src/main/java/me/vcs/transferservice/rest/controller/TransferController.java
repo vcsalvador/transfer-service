@@ -4,6 +4,7 @@ import static spark.Spark.exception;
 import static spark.Spark.post;
 
 import com.google.gson.Gson;
+import java.math.BigDecimal;
 import me.vcs.transferservice.exception.TransferOperationException;
 import me.vcs.transferservice.service.TransferService;
 import org.slf4j.Logger;
@@ -40,9 +41,9 @@ public class TransferController {
           "application/json",
           (request, response) -> {
             transferService.transfer(
-                request.attribute("origin"),
-                request.attribute("amount"),
-                request.attribute("destination"));
+                Integer.valueOf(request.params(":origin")),
+                new BigDecimal(request.params(":amount")),
+                Integer.valueOf(request.params(":destination")));
             response.status(200);
             return response.body();
           },
