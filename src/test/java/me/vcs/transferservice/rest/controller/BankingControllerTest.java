@@ -5,7 +5,6 @@ import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 
-import com.google.gson.Gson;
 import io.restassured.RestAssured;
 import java.math.BigDecimal;
 import me.vcs.transferservice.Application;
@@ -19,8 +18,6 @@ import spark.Spark;
 
 @DisplayName("Banking Controller Tests")
 class BankingControllerTest {
-
-  Gson gson = new Gson();
 
   @BeforeAll
   static void initServer() {
@@ -48,13 +45,17 @@ class BankingControllerTest {
     }
 
     @Test
-    @DisplayName("Should retrieve some account info")
+    @DisplayName("Should create account info")
     void shouldRetrieveAccounts() {
       AccountInfo accountInfo = new AccountInfo(1, BigDecimal.valueOf(1000.00));
 
       given().
         body(accountInfo).
-      post("/banking/");
+      when().
+          post("/banking/").
+      then().
+          log().ifValidationFails().
+          statusCode(200);
 
       when().
           get("/banking/").
@@ -62,6 +63,23 @@ class BankingControllerTest {
           log().ifValidationFails().
           statusCode(200).
           body("accountId", contains(1));
+    }
+
+    @Test
+    @DisplayName("Should clean up banking accounts")
+    void shouldDeleteAllAccounts() {
+      when().
+          delete("/banking/").
+      then().
+          log().ifValidationFails().
+          statusCode(204);
+
+      when().
+          get("/banking/").
+      then().
+          log().ifValidationFails().
+          statusCode(200).
+          body(is("[]"));
     }
   }
 

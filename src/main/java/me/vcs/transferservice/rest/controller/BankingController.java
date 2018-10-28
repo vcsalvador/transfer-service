@@ -60,7 +60,9 @@ public class BankingController {
           "application/json",
           (request, response) -> {
             AccountInfo accountInfo = gson.fromJson(request.body(), AccountInfo.class);
-            return bankingService.createAccount(accountInfo);
+            bankingService.createAccount(accountInfo);
+            response.status(200);
+            return response.body();
           },
           gson::toJson);
       delete(
@@ -69,7 +71,7 @@ public class BankingController {
           (request, response) -> {
             bankingService.deleteAll();
             response.status(204);
-            return response;
+            return response.body();
           },
           gson::toJson);
     };

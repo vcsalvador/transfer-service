@@ -1,15 +1,13 @@
 package me.vcs.transferservice.rest.controller;
 
-import static spark.Spark.before;
 import static spark.Spark.exception;
 import static spark.Spark.post;
 
 import com.google.gson.Gson;
 import me.vcs.transferservice.exception.TransferOperationException;
-import java.math.BigDecimal;
+import me.vcs.transferservice.service.TransferService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import me.vcs.transferservice.service.TransferService;
 import spark.RouteGroup;
 
 public class TransferController {
@@ -38,12 +36,15 @@ public class TransferController {
             response.body(gson.toJson(e.getMessage()));
           });
       post(
-          "/",
+          "/:amount/from/:origin/to/:destination",
           "application/json",
           (request, response) -> {
-            transferService.transfer(1, BigDecimal.TEN, 2);
+            transferService.transfer(
+                request.attribute("origin"),
+                request.attribute("amount"),
+                request.attribute("destination"));
             response.status(200);
-            return response;
+            return response.body();
           },
           gson::toJson);
     };
